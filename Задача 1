@@ -1,0 +1,18 @@
+class Solution(object):
+
+    def __init__(self):
+        self.seen_numbers = set()
+
+    def isHappy(self, n):
+        if n <= 0:
+            return False  
+
+        if n == 1:
+            return True
+
+        if n in self.seen_numbers:
+            return False 
+
+        self.seen_numbers.add(n)
+        sum_of_squares = sum(int(digit)**2 for digit in str(n))
+        return self.isHappy(sum_of_squares)
